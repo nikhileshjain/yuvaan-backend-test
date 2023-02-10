@@ -55,6 +55,8 @@ mongoose.set('strictQuery', false);
 mongoose.connect(URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    socketTimeoutMS: 60000,
+    serverSelectionTimeoutMS: 10000 // 5 seconds
 })
     .then(res => {
         console.log('Mongoose connected!');
