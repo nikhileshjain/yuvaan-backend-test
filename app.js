@@ -10,6 +10,7 @@ const fs = require('fs');
 const ejs = require('ejs');
 const mongoose = require('mongoose');
 const USER = require('./models/users');
+const PORT = process.env.PORT || 3000;
 //----------------------------------------------------------------------------------------------
 
 require('dotenv').config();
@@ -60,6 +61,9 @@ mongoose.connect(URL, {
 })
     .then(res => {
         console.log('Mongoose connected!');
+        app.listen(PORT, () => {
+            console.log('Server 3000 running!');
+        })
     })
     .catch(e => {
         console.log('Mongoose not connected!');
@@ -194,10 +198,4 @@ app.get('/verified', async (req, res) => {
         phone: 234982479,
     }
     res.render('verified', { data });
-})
-
-
-
-app.listen(3000, () => {
-    console.log('Server 3000 running!');
 })
